@@ -20,7 +20,10 @@ export class EditServerComponent implements OnInit {
       this.editMode = qParam['allowEdit'] === '1'? true:false;
       console.log(this.editMode['allowEdit']);
     });
-    this.server = this.serversService.getServer(1);
+    this.server = this.serversService.getServer(+this.route.snapshot.params['id']);
+    this.route.params.subscribe((params: Params)=>{
+      this.server = this.serversService.getServer(+params['id']);
+    });
     this.serverName = this.server.name;
     this.serverStatus = this.server.status;
   }
