@@ -14,6 +14,7 @@ import { ServersService } from './servers/servers.service';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { UserActivate } from './users/user/user.service';
+import { FormsComponent } from './forms/forms.component';
 
 const routes : Routes =[
   {path:'', component: HomeComponent},
@@ -24,6 +25,7 @@ const routes : Routes =[
     {path: ':id/edit', component:EditServerComponent},
     {path: ':id', component:ServerComponent}
   ]},
+  {path: 'forms', component:FormsComponent},
   {path: 'not-found', component: ErrorPageComponent},
   {path: '**', redirectTo:'/not-found'}
 ];
@@ -39,7 +41,8 @@ const routes : Routes =[
     UserComponent,
     EditServerComponent,
     ServerComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    FormsComponent
   ],
   imports: [
     BrowserModule,
