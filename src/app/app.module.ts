@@ -13,6 +13,7 @@ import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { UserActivate } from './users/user/user.service';
 
 const routes : Routes =[
   {path:'', component: HomeComponent},
@@ -45,7 +46,7 @@ const routes : Routes =[
     FormsModule,
     RouterModule.forRoot(routes)   
   ],
-  providers: [ServersService],
+  providers: [ServersService, UserActivate],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { UserActivate } from './user.service';
 
 @Component({
   selector: 'app-user',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class UserComponent implements OnInit {
   user: {id: number, name: string};
 
-  constructor(private routes : ActivatedRoute) { }
+  constructor(private routes : ActivatedRoute, private userA : UserActivate ) { }
 
   ngOnInit() {
     this.user = { id: +this.routes.snapshot.params['id'], name: this.routes.snapshot.params['name']};
@@ -19,6 +20,10 @@ export class UserComponent implements OnInit {
         name: param['name']
       }
     });
+  }
+
+  OnActivate(){
+    this.userA.activatedButton.next(true);
   }
 
 
