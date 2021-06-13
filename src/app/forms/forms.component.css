@@ -2,3 +2,11 @@
 
     margin : 20px, 0px;
 }
+
+input.ng-invalid.ng-touched{
+    border :  2px solid red;
+}
+
+.upper{
+    margin-top: 0px;
+}

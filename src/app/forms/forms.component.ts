@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-forms',
@@ -8,12 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class FormsComponent implements OnInit {
 
   constructor() { }
+  textArea = "";
+
+  DefaultQuestion = 'pet';
 
   ngOnInit(): void {
   }
 
   suggestUserName() {
     const suggestedName = 'Superuser';
+  }
+
+  onSubmit( form : NgForm){
+    console.log(form);
   }
 
 }
