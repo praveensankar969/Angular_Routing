@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <form  (ngSubmit)="onCreatePost()" #postForm="ngForm">
+                <div class="form-group">
+                    <label for="title">Id</label>
+                    <input type="number" class="form-control" id="id" required ngModel name="id" />
+                </div>
+                <div class="form-group">
+                    <label for="title">User Name</label>
+                    <input type="text" class="form-control" id="username" required ngModel name="username" />
+                </div>
+                <div class="form-group">
+                    <label for="title">Password</label>
+                    <input type="text" class="form-control" id="password" required ngModel name="password" />
+                </div>
+                <div class="form-group">
+                    <label for="title">Subject</label>
+                    <input type="text" class="form-control" id="subject" required ngModel name="subject" />
+                </div>
+                <div class="form-group">
+                    <label for="title">Experience</label>
+                    <input type="number" class="form-control" id="experience" required ngModel name="experience" />
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Date of Joining</label>
+                    <input type="text" class="form-control" id="doj" required ngModel name="doj" />
+                </div>
+                <div class="form-group">
+                    <label for="content">Phone Number</label>
+                    <input type="text" class="form-control" id="phone" required ngModel name="phone" />
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]="!postForm.valid">
+                    Add Staff Details
+                </button>
+            </form>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <button class="btn btn-primary" (click)="onFetchPosts()">
+                Fetch Staff Details
+            </button>
+            |
+            <button class="btn btn-danger" [disabled]="loadedPosts.length < 1" (click)="onClear()">
+                Delete Staff Details
+            </button>
+            <br>
+            <br>
+            <div *ngIf="deleteClicked">
+                <label for="content">Enter ID of staff for deleting</label>
+                <input type = "number" id="id" [(ngModel)]="userId"/>
+                <button class="btn btn-danger" [disabled]="loadedPosts.length < 1" (click)="onClearPosts()">
+                    Confirm Delete
+                </button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <p *ngIf="loadedPosts.length<1">No posts available!</p>
+            <br>
+            <ul class="list-group" *ngIf="loadedPosts.length>=1">
+                <li class="list-group-item" *ngFor="let item of loadedPosts">
+                   <p>Name: {{item.userName}}</p> 
+                   <p>Subject: {{item.subject}}</p> 
+                   <p>Experience: {{item.experience}}</p> 
+                   <p>Phone: {{item.phoneNumber}}</p> 
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
