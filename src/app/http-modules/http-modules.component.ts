@@ -19,10 +19,12 @@ export class HttpModulesComponent implements OnInit {
   constructor(private http : HttpClient) { }
 
   ngOnInit() {
-    this.http.get("https://localhost:5001/api/Staff").pipe(map(data=>{
+    this.http.get<StaffDTO[]>("https://localhost:5001/api/Staff").pipe(map(data=>{
       const posts:StaffDTO[] = [];
       for(const d in data){
-        posts.push(data[d]);
+        if(data[d].experience>5){
+          posts.push(data[d]);
+        }
       }
       return posts;
     })).subscribe(res =>{
@@ -37,7 +39,7 @@ export class HttpModulesComponent implements OnInit {
   }
 
   onFetchPosts(){
-    this.http.get("https://localhost:5001/api/Staff").pipe(map(data=>{
+    this.http.get<StaffDTO[]>("https://localhost:5001/api/Staff").pipe(map(data=>{
       const posts:StaffDTO[] = [];
       for(const d in data){
         posts.push(data[d]);

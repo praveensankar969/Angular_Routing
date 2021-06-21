@@ -66,6 +66,7 @@
             <ul class="list-group" *ngIf="loadedPosts.length>=1">
                 <li class="list-group-item" *ngFor="let item of loadedPosts">
                    <p>Name: {{item.userName}}</p> 
+                   <p>Id: {{item.id}}</p> 
                    <p>Subject: {{item.subject}}</p> 
                    <p>Experience: {{item.experience}}</p> 
                    <p>Phone: {{item.phoneNumber}}</p> 

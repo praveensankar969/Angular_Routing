@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -16,6 +16,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { UserActivate } from './users/user/user.service';
 import { FormsComponent } from './forms/forms.component';
 import { HttpModulesComponent } from './http-modules/http-modules.component';
+import { AuthInterceptor } from './http-modules/auth-interceptor.service';
 
 const routes : Routes =[
   {path:'', component: HomeComponent},
@@ -53,7 +54,11 @@ const routes : Routes =[
     HttpClientModule,
     RouterModule.forRoot(routes)   
   ],
-  providers: [ServersService, UserActivate],
+  providers: [ServersService, UserActivate,{
+    provide :  HTTP_INTERCEPTORS,
+    useClass : AuthInterceptor,
+    multi : true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
