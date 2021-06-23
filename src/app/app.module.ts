@@ -17,6 +17,7 @@ import { UserActivate } from './users/user/user.service';
 import { FormsComponent } from './forms/forms.component';
 import { HttpModulesComponent } from './http-modules/http-modules.component';
 import { AuthInterceptor } from './http-modules/auth-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes : Routes =[
   {path:'', component: HomeComponent},
@@ -52,7 +53,8 @@ const routes : Routes =[
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)   
+    RouterModule.forRoot(routes) ,
+    BrowserAnimationsModule  
   ],
   providers: [ServersService, UserActivate,{
     provide :  HTTP_INTERCEPTORS,
